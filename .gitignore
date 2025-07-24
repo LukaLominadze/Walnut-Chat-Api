@@ -1,0 +1,10 @@
+# Visual studio files
+*.sln
+*.csproj
+*.csproj.user
+/.vs
+
+# binary folders
+*bin
+*obj
+Walnut.Data/Migrations

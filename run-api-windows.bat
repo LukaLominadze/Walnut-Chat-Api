@@ -1,0 +1,1 @@
+dotnet run --project Walnut.Api --launch-profile https
