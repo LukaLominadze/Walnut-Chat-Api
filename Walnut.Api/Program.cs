@@ -1,4 +1,5 @@
 using System.Text;
+using ENDE.Api.Controllers;
 using ENDE.Api.Services;
 using ENDE.Data;
 using ENDE.Data.Repositories;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Walnut.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<PasswordHasher<User>>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddDbContext<DataContext>(options =>
 {
