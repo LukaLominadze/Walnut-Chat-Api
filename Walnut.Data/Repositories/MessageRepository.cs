@@ -33,8 +33,10 @@ namespace Walnut.Data.Repositories
         public async Task<List<Message>> GetAllMessages(Guid senderId, Guid receiverId)
         {
             return await _dataContext.Messages
-                .Where(m => (m.SenderId == senderId || m.SenderId == receiverId) &&
-                            (m.ReceiverId == receiverId || m.ReceiverId == senderId))
+                .Where(m => (m.SenderId == senderId && m.ReceiverId == receiverId) ||
+                            (m.SenderId == receiverId && m.ReceiverId == senderId))
+                .Include(m => m.Sender)
+                .Include(m => m.Receiver)
                 .ToListAsync();
         }
     }
